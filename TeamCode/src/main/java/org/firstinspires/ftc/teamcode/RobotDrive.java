@@ -13,8 +13,15 @@ public class RobotDrive
     {
         double right = opMode.gamepad1.right_stick_y;
         double left = opMode.gamepad1.left_stick_y;
-        double linearSlide = opMode.gamepad2.left_stick_y;
-        double intake = opMode.gamepad2.right_stick_y;
+        double linearSlide = 0;
+        double intake = 0;
+
+        if (opMode.gamepad1.left_bumper) linearSlide = 1;
+        else if (opMode.gamepad1.left_trigger > 0) linearSlide = -1;
+
+        if (opMode.gamepad1.right_bumper) intake = 1;
+        else if (opMode.gamepad1.right_trigger > 0) intake = -1;
+
 
         move(map, left, right, linearSlide, intake);
     }
@@ -28,12 +35,12 @@ public class RobotDrive
      */
     public void move(DeviceMap map, double left, double right, double linearSlide, double intake)
     {
-        map.getLeftBack().setPower(-right * 1.5);
-        map.getRightBack().setPower(-left * 1.5);
+        map.getLeftBack().setPower(right * 1.5);
+        map.getRightBack().setPower(left * 1.5);
 
-        map.getLinearSlide().setPower(linearSlide * 2);
+        map.getLinearSlide().setPower(linearSlide * 1.5);
 
-        map.getIntake().setPower(intake);
+        map.getIntake().setPower(intake * 1.5);
 
         map.getLeftBack().setPower(0);
         map.getRightBack().setPower(0);
