@@ -11,14 +11,14 @@ public class RobotDrive
      */
     public void updateControllerDrive(AntonOpMode opMode, DeviceMap map)
     {
-        double right = opMode.gamepad1.right_stick_y;
-        double left = opMode.gamepad1.left_stick_y;
+        double left = opMode.gamepad1.right_stick_y;
+        double right = opMode.gamepad1.left_stick_y;
         double carouselWheel = 0;
         double linearSlide = 0;
         double intake = 0;
 
-        if (opMode.gamepad1.left_bumper) linearSlide = 1;
-        else if (opMode.gamepad1.left_trigger > 0) linearSlide = -1;
+        if (opMode.gamepad1.left_bumper) linearSlide = -1;
+        else if (opMode.gamepad1.left_trigger > 0) linearSlide = 1;
 
         if (opMode.gamepad1.right_bumper) intake = 1;
         else if (opMode.gamepad1.right_trigger > 0) intake = -1;
