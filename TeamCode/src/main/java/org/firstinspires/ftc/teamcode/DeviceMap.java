@@ -151,6 +151,11 @@ public class DeviceMap
         return linearSlide;
     }
 
+    public DcMotor getCarouselWheel()
+    {
+        return carouselWheel;
+    }
+
     public CRServo getIntake()
     {
         return intake;
