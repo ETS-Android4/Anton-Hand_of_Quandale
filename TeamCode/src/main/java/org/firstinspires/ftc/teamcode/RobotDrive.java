@@ -14,7 +14,7 @@ public class RobotDrive
         double left = opMode.gamepad1.right_stick_y;
         double right = opMode.gamepad1.left_stick_y;
         double carouselWheel = 0;
-        double linearSlide = 0;
+        double linearSlide = -.025; // TEST
         double intake = 0;
 
         if (opMode.gamepad1.left_bumper) linearSlide = -1;
@@ -47,7 +47,7 @@ public class RobotDrive
 
         map.getIntake().setPower(intake);
 
-        //
+        // reset
 
         map.getLeftBack().setPower(0);
         map.getRightBack().setPower(0);
